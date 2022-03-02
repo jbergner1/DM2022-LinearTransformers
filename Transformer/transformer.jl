@@ -12,7 +12,7 @@
     
     
     "just a wrapper for two dense layer."
-    PwFFN(size::Int, h::Int, act = relu) = PwFFN(
+    PwFFN(size::Int, h::Int, act = relu) = PwFFN(  #relu vielleicht auf elu + 1 oder nur elu ändern
         Dense(size, h, act),
         Dense(h, size)
     )
@@ -43,7 +43,7 @@
         Transformer(size::Int, head::Int, ps::Int;
                     future::Bool = true, act = relu, pdrop = 0.1)
         Transformer(size::Int, head::Int, hs::Int, ps::Int;
-                    future::Bool = true, act = relu, pdrop = 0.1)
+                    future::Bool = true, act = relu, pdrop = 0.1)  
     
     Transformer layer.
     
@@ -51,7 +51,11 @@
     `ps` is the hidden size & `act` is the activation function of the positionwise feedforward layer. 
     When `future` is `false`, the k-th token can't see the j-th tokens where j > k. `pdrop` is the dropout rate.
     """
-    function Transformer(size::Int, head::Int, ps::Int; future::Bool = true, act = relu, pdrop = 0.1)
+
+    ########
+    #ganze Funktion von Transformer ändern
+    ########
+    function Transformer(size::Int, head::Int, ps::Int; future::Bool = true, act = relu, pdrop = 0.1)  #relu vielleicht wieder auf elu ändern
         rem(size, head) != 0 && error("size not divisible by head")
         Transformer(size, head, div(size, head), ps;future=future, act=act, pdrop=pdrop)
     end
@@ -61,7 +65,7 @@
         LayerNorm(size),
         PwFFN(size, ps, act),
         LayerNorm(size),
-        Dropout(pdrop),
+        Dropout(pdrop),     #braucht man das? vielleicht nicht
     )
     
     function (t::Transformer)(x::A, mask=nothing) where {T, N, A<:AbstractArray{T, N}}
@@ -77,7 +81,7 @@
         res_pwffn
     end
     
-    function Base.show(io::IO, t::Transformer)
+    function Base.show(io::IO, t::Transformer) #zum visualisieren --> nice to have
         hs = div(size(t.mh.iqproj.weight)[1], t.mh.head)
         h, ps = size(t.pw.dout.weight)
     
@@ -93,6 +97,10 @@
         end
     end
     
+
+    ###########
+    #auch diese Funktion ändern
+    ###############
     struct TransformerDecoder{MA<:MultiheadAttention, LA<:LayerNorm,
                               IMA<:MultiheadAttention, ILA<:LayerNorm,
                               P<:PwFFN, LP<:LayerNorm, DP<:Dropout} <: AbstractTransformer
@@ -125,7 +133,7 @@
     TransformerDecoder(size::Int, head::Int, hs::Int, ps::Int; act = relu, pdrop = 0.1) = TransformerDecoder(
         MultiheadAttention(head, size, hs, size; future=false, pdrop=pdrop),
         LayerNorm(size),
-        MultiheadAttention(head, size, hs, size; future=true, pdrop=pdrop),
+        MultiheadAttention(head, size, hs, size; future=true, pdrop=pdrop), #future = true --> Unterschied zu oben??
         LayerNorm(size),
         PwFFN(size, ps, act),
         LayerNorm(size),

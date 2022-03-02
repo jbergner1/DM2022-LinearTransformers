@@ -70,6 +70,9 @@ function Base.show(io::IO, mh::MultiheadAttention)
     end
 end
 
+#############################
+# neue Funktion schreiben
+##############################
 function (mh::MultiheadAttention)(query::A1,
                                   key::A2,
                                   value::A3;
@@ -171,6 +174,10 @@ end
 #     value * score #size(return) == (dims, q_seq_len)
 # end
 
+
+##########
+# diese Funktion wird in attention genutzt und muss vielleicht umgeschrieben werden
+##############
 function apply_mask(score, mask)
   s = size(score)
   ms = size(mask)
@@ -187,6 +194,10 @@ end
 apply_mask(score::AbstractArray{T}, ::Nothing, future) where T = future ? score : apply_mask(score, create_atten_mask(T, score, nothing, future))
 apply_mask(score::AbstractArray{T}, mask, future) where T = apply_mask(score, create_atten_mask(T, score, mask, future))
 
+
+#######################
+# neue Funktion schreiben mit Attention wie im Paper 
+########################
 function attention(query::A1,
                    key::A2,
                    value::A3,
