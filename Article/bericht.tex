@@ -6,16 +6,20 @@
 \usepackage{amssymb}
 
 
-\title{Data Mining,  Bericht Vorlage Replikation und Reproduktion\footnote{Diese Vorlage ist eine angepasste Version der Vorlage von Jonathan May und Elan Markowitz für den Kurs CS662 Advanced Natural Language Processing an der University of Southern California, die wiederum auf Arbeiten von Noah A. Smith, Jesse Dodge aufbauten (https://elanmarkowitz.github.io/USC-CS662/).}}
+\title{Replication of "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention"}
 %\head{Titel ersetzen und Sub-Titel streichen.}
-\author{Alexander Hinneburg\footnote{Diesen Titel und Autor müssen sie für ihren Bericht natürlich ändern.}}
+\author{Viet-Anh Do and Johannes Bergner}
 \date{Version 1.0.2, 14.2.2022}
 
 \begin{document}
 \maketitle
-\section{Einleitung}
-Beschreiben sie mit ein paar Sätzen den Kontext der replizierten/reproduzierten Arbeit. Es werden höchstens drei bis vier Paragraphen erwartet. Sie sollen hinreichend erklären, was das das Problem ist, das der Artikel bearbeitet, warum es ein wichtiges Problem ist und das die Beiträge des replizierten/reproduzierten Artikel ist. Zitieren sie in diesem Abschnitt relevante wissenschaftliche Arbeiten. 
-While
+\section{Introduction}
+%Beschreiben sie mit ein paar Sätzen den Kontext der replizierten/reproduzierten Arbeit. Es werden höchstens drei bis vier Paragraphen erwartet. Sie sollen hinreichend erklären, was das das Problem ist, das der Artikel bearbeitet, warum es ein wichtiges Problem ist und das die Beiträge des replizierten/reproduzierten Artikel ist. Zitieren sie in diesem Abschnitt relevante wissenschaftliche Arbeiten. 
+
+Transformers introduced by (Vaswani et al., 2017) are the state-of-the-art in  tasks like language understanding and image processing.  However their quadratic memory complexity within the self-attention mechanism weakens the efficiency when dealing with long sequences.  Consequently a number of so called "X-former" - models have been proposed, that improve the original Transformer in terms of computational and memory efficiency.
+
+Next to other approaches, like Performer (Choromanski et al., 2020), Linformer (Wang et al., 2020) and Big Bird (Zaheer et al., 2020) the authors of "Transformers are RNNs" developed a Linear Transformer (Katharopoulus et al., 2020) to show how the quadratic complexity O(n^2) can be reduced to a linear complexity of O(n).
+
 
 
 
