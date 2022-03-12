@@ -16,9 +16,26 @@
 \section{Introduction}
 %Beschreiben sie mit ein paar Sätzen den Kontext der replizierten/reproduzierten Arbeit. Es werden höchstens drei bis vier Paragraphen erwartet. Sie sollen hinreichend erklären, was das das Problem ist, das der Artikel bearbeitet, warum es ein wichtiges Problem ist und das die Beiträge des replizierten/reproduzierten Artikel ist. Zitieren sie in diesem Abschnitt relevante wissenschaftliche Arbeiten. 
 
-Transformers introduced by (Vaswani et al., 2017) are the state-of-the-art in  tasks like language understanding and image processing.  However their quadratic memory complexity within the self-attention mechanism weakens the efficiency when dealing with long sequences.  Consequently a number of so called "X-former" - models have been proposed, that improve the original Transformer in terms of computational and memory efficiency.
+Transformers introduced by (Vaswani et al., 2017) are the state-of-the-art in  tasks like language understanding and image processing.  However their quadratic memory complexity within the self-attention mechanism weakens the efficiency when dealing with long sequences.  
+Consequently a number of so called \("X\)-\(former"\)- models have been proposed, that improve the original Transformer in terms of computational and memory efficiency.
 
-Next to other approaches, like Performer (Choromanski et al., 2020), Linformer (Wang et al., 2020) and Big Bird (Zaheer et al., 2020) the authors of "Transformers are RNNs" developed a Linear Transformer (Katharopoulus et al., 2020) to show how the quadratic complexity O(n^2) can be reduced to a linear complexity of O(n).
+Next to other approaches, like Performer (Choromanski et al., 2020), Linformer (Wang et al., 2020) and Big Bird (Zaheer et al., 2020) the authors of "Transformers are RNNs" developed a Linear Transformer (Katharopoulus et al., 2020) to show how the quadratic complexity \(O(N^2)\)  can be reduced to a linear complexity of \(O(N)\) without reducing the accuracy.
+
+Standard Transformers use the folllowing attention matrix:
+
+\begin{align}
+    Attention(Q, K, V) {=} V {=} softmax \left(\frac {QK^T}{\sqrt{D_{k}}}\right) V,
+\end{align}
+
+with the queries Q \( \in \mathbb{R}^{N \times D_{k}}\),  keys K \(\in \mathbb{R}^{M \times D_{k}}\) and values V \( \in \mathbb{R}^{N \times D_{v}}\), where N and M represent the lenghts of queries and keys (or values) and \(D_{k}\) and \(D_{v}\) the dimensions of the keys (or queries) and values. The softmax function is applied rowwise to \(QK^T\).
+
+(Katharopoulus et al., 2020) simplify this attention mechanism by generalizing equation (1) and replacing the softmax with the kernel feature map \(\phi (x) {=} elu(x) +1\):
+
+\begin{align}
+    V_{i}' {=} \frac{\phi(Q_{i})^T \sum_{j=1}^{i} \phi(K_{j})V_{j}^T}{\phi(Q_{i})^T \sum_{j=1}^{i}\phi(K_{j})}
+\end{align}
+
+Because of that \(\sum_{j=1}^{i} \phi(K_{j})V_{j}^T\) and \(\sum_{j=1}^{i}\phi(K_{j})\) can be computed once and reused for every query, which leads to a time and memory complexity of \(O(N)\). Furthermore by representing these cumulated sums as \(S_{i}\) and \(Z_{i}\), they can be seen as states of an RNN for causal attention and computed from \(S_{i-1}\) and \(Z_{i-1}\) in constant time.
 
 
 
