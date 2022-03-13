@@ -37,6 +37,12 @@ with the queries Q \( \in \mathbb{R}^{N \times D_{k}}\),  keys K \(\in \mathbb{R
 
 Because of that \(\sum_{j=1}^{i} \phi(K_{j})V_{j}^T\) and \(\sum_{j=1}^{i}\phi(K_{j})\) can be computed once and reused for every query, which leads to a time and memory complexity of \(O(N)\). Furthermore by representing these cumulated sums as \(S_{i}\) and \(Z_{i}\), they can be seen as states of an RNN for causal attention and computed from \(S_{i-1}\) and \(Z_{i-1}\) in constant time.
 
+In tests the Linear Transformer of (Katharopoulus et al., 2020) performed an image generation task based on the CIFAR-10 dataset over 4,000 times faster than the normal transformer with the same accuracy.  These results seem extraordinary, which is why the Linear Transformer has been recognized in further scientific research and the paper \("Transformers\) \( are\) \(RNNs"\) has been recited about 250 times in nearly two years. 
+
+Nevertheless papers that benchmark the improvements in the Transformer architecture,like (Yi et al., 2020) show, that Linear Transformer perform faster that the original Transformer but not as high as 4,000 times faster. In this replication we will try to replicate a Linear Transformer in Julia in order to examnie if five-digit speed improvements are really possible.
+
+
+
 
 
 
@@ -46,38 +52,38 @@ Because of that \(\sum_{j=1}^{i} \phi(K_{j})V_{j}^T\) and \(\sum_{j=1}^{i}\phi(K
 % Was ist der Beitrag bzw. sind die Beiträge Ihres Artikels über die Reproduktion der ausgewählten Arbeit?
 
 \section{Umfang der Replikation/Reproduktion}
-Erklären sie die Behauptungen/Hypothesen/Experimente des Artikels, die sie für ihre Replikation/Reproduktion ausgewählt haben.
-Motivieren und begründen sie ihre Auswahl. 
-Es ist sinnvoll, wenn sie sich auf die Behauptung konzentrieren, die der Hauptbeitrag des Artikels ist.
-Um den Hauptbeitrag herauszufinden, versuchen sie den Artikel in ein bis zwei Sätzen zusammenzufassen, z.B.
-\begin{quote}
-    ``This paper introduces a new activation function X that outperforms a similar activation function Y on tasks Z,V,W.''  oder 
+%Erklären sie die Behauptungen/Hypothesen/Experimente des Artikels, die sie für ihre Replikation/Reproduktion ausgewählt haben.
+%Motivieren und begründen sie ihre Auswahl. 
+%Es ist sinnvoll, wenn sie sich auf die Behauptung konzentrieren, die der Hauptbeitrag des Artikels ist.
+%Um den Hauptbeitrag herauszufinden, versuchen sie den Artikel in ein bis zwei Sätzen zusammenzufassen, z.B.
+%\begin{quote}
+   % ``This paper introduces a new activation function X that outperforms a similar activation %function Y on tasks Z,V,W.''  oder 
     
-    ``Dieser Artikel führt eine neuartige Aktivierungsfunktion X ein, welche die ähnliche Aktivierungsfunktionen Y für die Aufgaben Z,W,V deutlich verbessert.''
-\end{quote}
-Stecken sie den Umfang ihrer Replikation/Reproduktion so klar wie möglich ab. 
-Die Behauptungen ihres Berichts sollten durch die Ergebnisse ihrer Experimente unterstützt oder widerlegt werden.
-Schauen sie sich zum Beispiel diese Beschreibung an:
-\begin{quote}
-    ``Contextual embedding models have shown strong performance on a number of tasks across NLP. We will run experiments evaluating two types of contextual embedding models on datasets X, Y, and Z.'' oder 
+   % ``Dieser Artikel führt eine neuartige Aktivierungsfunktion X ein, welche die ähnliche Aktivierungsfunktionen Y für die Aufgaben Z,W,V deutlich verbessert.''
+%\end{quote}
+%Stecken sie den Umfang ihrer Replikation/Reproduktion so klar wie möglich ab. 
+%Die Behauptungen ihres Berichts sollten durch die Ergebnisse ihrer Experimente unterstützt oder widerlegt werden.
+%Schauen sie sich zum Beispiel diese Beschreibung an:
+%\begin{quote}
+   % ``Contextual embedding models have shown strong performance on a number of tasks across NLP. We will run experiments evaluating two types of contextual embedding models on datasets X, Y, and Z.'' oder 
     
-    ``Für Contextual-Embedding-Modelle wurde nachgewiesen, dass die bei einer Vielzahl von Aufgaben aus einem breiten Spektrum natürlichen Sprachverarbeitung (NLP) eine hervorragende Leistung erbringen. Wir evaluieren experimentell zwei verschiedene Arten von Contextual-Embedding-Modellen auf den Datensätzen X, Y, Z.''    
-\end{quote}
-Der Umfang ist zu breit angelegt und es fehlt die Erwartung für ein klares Ergebnis.
-Schauen sie sich die nächste Beschreibung an:
-\begin{quote}
-``Finetuning pretrained BERT on SST-2 will have higher accuracy than an LSTM trained with GloVe embeddings.'' oder
+   % ``Für Contextual-Embedding-Modelle wurde nachgewiesen, dass die bei einer Vielzahl von Aufgaben aus einem breiten Spektrum natürlichen Sprachverarbeitung (NLP) eine hervorragende Leistung erbringen. Wir evaluieren experimentell zwei verschiedene Arten von Contextual-Embedding-Modellen auf den Datensätzen X, Y, Z.''    
+%\end{quote}
+%Der Umfang ist zu breit angelegt und es fehlt die Erwartung für ein klares Ergebnis.
+%Schauen sie sich die nächste Beschreibung an:
+%\begin{quote}
+%``Finetuning pretrained BERT on SST-2 will have higher accuracy than an LSTM trained with GloVe embeddings.'' oder
 
-``Das Anpassen eines vortrainierten BERT-Modells für die SST-2-Aufgabe führt zu einer höheren Klassifikationsrate als ein LSTM-Modell, das für GloVe-Einbettungen trainiert wurde''
-\end{quote}
-Hier ist klarer was bei der Reproduktion/Replikation herauskommen kann. Diese Aussage könnte durch ihre Ergebnisse tatsächlich bestätigt oder widerlegt werden. 
+%``Das Anpassen eines vortrainierten BERT-Modells für die SST-2-Aufgabe führt zu einer höheren Klassifikationsrate als ein LSTM-Modell, das für GloVe-Einbettungen trainiert wurde''
+%\end{quote}
+%Hier ist klarer was bei der Reproduktion/Replikation herauskommen kann. Diese Aussage könnte durch ihre Ergebnisse tatsächlich bestätigt oder widerlegt werden. 
 
-Führen sie eindeutig die Behauptungen auf, die sie in ihrer Arbeit untersuchen. 
-\begin{itemize}
-    \item Behauptung 1
-    \item Behauptung 2
-    \item Behauptung 3
-\end{itemize}
+%Führen sie eindeutig die Behauptungen auf, die sie in ihrer Arbeit untersuchen. 
+%\begin{itemize}
+   % \item Behauptung 1
+   % \item Behauptung 2
+   % \item Behauptung 3
+%\end{itemize}
 
 \section{Methoden}
 
