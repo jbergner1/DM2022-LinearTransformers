@@ -39,7 +39,7 @@ Because of that \(\sum_{j=1}^{i} \phi(K_{j})V_{j}^T\) and \(\sum_{j=1}^{i}\phi(K
 
 In tests the Linear Transformer of (Katharopoulus et al., 2020) performed an image generation task based on the CIFAR-10 dataset over 4,000 times faster than the normal transformer with the same accuracy.  These results seem extraordinary, which is why the Linear Transformer has been recognized in further scientific research and the paper \("Transformers\) \( are\) \(RNNs"\) has been recited about 250 times in nearly two years. 
 
-Nevertheless papers that benchmark the improvements in the Transformer architecture,like (Yi et al., 2020) show, that Linear Transformer perform faster then the original Transformer but not as high as 4,000 times faster. In this replication we will try to replicate a Linear Transformer in Julia in order to examnie if five-digit speed improvements are really possible.
+Nevertheless papers that benchmark the improvements in the Transformer architecture, like (Yi et al., 2020) show, that Linear Transformer perform faster then the original Transformer but not as high as 4,000 times faster. In this replication we will try to replicate a Linear Transformer in Julia in order to examnie if five-digit speed improvements are really possible.
 
 
 
@@ -51,7 +51,7 @@ Nevertheless papers that benchmark the improvements in the Transformer architect
 % Welche neuen Erkenntnisse erwarten Sie durch die geplante Reproduktion? Was steht davon nicht in dem replizierten Artikel?
 % Was ist der Beitrag bzw. sind die Beiträge Ihres Artikels über die Reproduktion der ausgewählten Arbeit?
 
-\section{Umfang der Replikation/Reproduktion}
+\section{Scope of the replication}
 %Erklären sie die Behauptungen/Hypothesen/Experimente des Artikels, die sie für ihre Replikation/Reproduktion ausgewählt haben.
 %Motivieren und begründen sie ihre Auswahl. 
 %Es ist sinnvoll, wenn sie sich auf die Behauptung konzentrieren, die der Hauptbeitrag des Artikels ist.
@@ -78,6 +78,10 @@ Nevertheless papers that benchmark the improvements in the Transformer architect
 %\end{quote}
 %Hier ist klarer was bei der Reproduktion/Replikation herauskommen kann. Diese Aussage könnte durch ihre Ergebnisse tatsächlich bestätigt oder widerlegt werden. 
 
+Due to their linear complexity, Linear Transformers are said to be highly efficient when the sequence length increases. (Katharopoulus et al., 2020) evaluate their Transformer on image generation and automatic speech recognition and conclude, that their Linear Transformer is up to three orders of magnitude faster than regular Transformers while reaching the same performance levels.  In this Replication we want to investigate, if Linear Transformers perform tasks with long sequences as precise as the original Transformer, but significantly faster. 
+
+However, the official GitHub Repository of the paper does not contain experiments. The authors published their experiments in a seperate GitHub Repository, that contains evaluations on image generation and a copy task of number sequences.  In order to examine speed and precision with growing sequence length, a copy task of number sequences is favourable because it is easy to increase the sequence length and to evaluate the results. Furthermore an example of a copy task is already given in the Julia package Transformers.jl. We will use this example as a benchmark, that represents the performance of the Transformer by (Vaswani et al., 2017). Based on that we are going to replace the softmax-based attention function by a linear attention function. Then we apply different sequence lengths and examine, if the Linear Transformer performs faster but with the same precision as the original Transformer especially with high sequence lenghts. 
+
 %Führen sie eindeutig die Behauptungen auf, die sie in ihrer Arbeit untersuchen. 
 %\begin{itemize}
    % \item Behauptung 1
@@ -90,27 +94,35 @@ Nevertheless papers that benchmark the improvements in the Transformer architect
 %In this section you explain your approach -- did you use the author's code, did you aim to re-implement the approach from the paper description? Summarize the resources (code, documentation, GPUs) that you used. 
 
 \subsection{Modellbeschreibung}
-Beischreiben sie die Modelle, die im Originalartikel genutzt werden, einschließlich der Architektur, der Zielfunktion und der Parameter. 
+For this replication a minimalistic model was developed to determine the convergence properties of Linear Transformers. The Transformer which was introduced by Vaswani et al. (2017) has been chosen as our baseline in this experiment. Unlike this aforementioned model which utilized softmax attention, the authors shifted the feature map into the module attention, computed the dot product of key and value instead of key and query so that the attention matrix never be explicitly computed and thus decrease the complexity from \(O(N^2 max(D,M))\) to \(O(ND^2M)\), where \(N >\) \(D^2\) in practice. Our target is to determine, whether Linear Attention converges faster than the softmax attention for given sequence length.  
+%Beischreiben sie die Modelle, die im Originalartikel genutzt werden, einschließlich der Architektur, der Zielfunktion und der Parameter. 
 %Describe the models used in the original paper, including the architecture, learning objective and the number of parameters.
 
 \subsection{Datenbeschreibung}
-Beschreiben sie die Datenmengen die sie genutzt haben und wie sie sie bekommen haben. 
+For this synthetic task, we use a sequence of maximum length 128 with 10 different symbols separated by a dedicated separator symbol. These sequences are randomly generated.
+%Beschreiben sie die Datenmengen die sie genutzt haben und wie sie sie bekommen haben. 
 %Describe the datasets you used and how you obtained them. 
 
 \subsection{Hyperparameter}
-Beschreiben sie, wie sie Hyperparameter gesetzt haben. Welche Quellen haben sie für die konkreten Werte genutzt (z.B. den Forschungsartikel, Code oder sie hatten eine wohlbegründete Vermutung, educated guess).
+We have adjusted the hyperparameters of the model according to the original paper. The number of head per Transformer is 8, whose size is 64, which leads to the size of the whole Transformer of 512. The original length is kept the same as in the original paper at 128 whereas the learning rate will stay constantly at \(10^-3\). 
+%Beschreiben sie, wie sie Hyperparameter gesetzt haben. Welche Quellen haben sie für die konkreten Werte genutzt (z.B. den Forschungsartikel, Code oder sie hatten eine wohlbegründete Vermutung, educated guess).
 %Describe how you set the hyperparameters and what the source was for their value (e.g. paper, code or your guess). 
 
 \subsection{Implementierung}
-Beschreiben sie, ob sie vorhandenen Code oder eigenen Code genutzt haben.
-Stellen sie Links zum Code bereit und beschreiben sie welche Programmiersprachen und Pakete genutzt wurden.
-Ihr Github oder Gitlab-Reposititory sollte öffentlich sein. 
-Das Reposititory sollte klar dokumentiert werden. 
+The programming language that is used in the replication task is Julia. Due to the restriction of time, we have mainly taken most of the code from the package Transformers.jl as a template for the implementation. Other packages which were also imported into the notebook include Flux.jl, Tullio.jl, NNlib.jl and so on. For the synthetic task, we use a version of copy task based on the experiment which was used by Kitaev et al. (2020). As mentioned above in 3.1, what we do to implement linear attention is to replace the attention function of Transformers.jl with our own code called LinearAttention, which has been translated from the original PyTorch code by (Katharopoulus et al., 2020) to Julia code. The original code requires in addition one more function called splitHeads to reshape the 3D tensor to 4D tensor, which we have also included in the script. Furthermore, as the authors used the activation function elu(x) + 1 in original paper instead of relu(x) as in the Transformers.jl, we also attempt to implement elu(x) + 1 (which was called nelu in our script) into the code to make sure that the performances of each model are not affected by different conditions and therefore they are comparable. Also we have trimmed the other unnecessary functions like \(apply\)\(\textunderscore\)\(mask\), … for the sake of simplification. Lastly, instead of using Kullback-Leibler divergence as loss function, we apply cross entropy to calculate the loss for the gradient descent as given in the original work.
+
+# hier kommt noch code dazu
+
+%Beschreiben sie, ob sie vorhandenen Code oder eigenen Code genutzt haben.
+%Stellen sie Links zum Code bereit und beschreiben sie welche Programmiersprachen und Pakete genutzt wurden.
+%Ihr Github oder Gitlab-Reposititory sollte öffentlich sein. 
+%Das Reposititory sollte klar dokumentiert werden. 
 %Describe whether you use the existing code or write your own code, with the link to the code and which programming languages/packages were used. Note that the github repo you link to should be public and have a clear documentation.
 
 \subsection{Aufbau der Experimente}
-Erklären sie, wie sie ihre Experimente durchgeführt haben. Was für Ressourcen haben sie verwendet, z.B. GPU/CPU-Ressourcen.
-Verlinken sie ihren Code und Notebooks. 
+The sequence for the copy task was first with start and end symbol, then embeded to become a 128x128 Matrix and goes through 4 layer of encoder as well as 4 layer of decoder. At the end, the loss can be computed for each iteration, so that we can monitor the improvement of loss over each iteration. Furthermore, we can also observe the execute time of each model after a certain amount of iteration. To do so, we use an Nvidia RTX … with … of memory.
+%Erklären sie, wie sie ihre Experimente durchgeführt haben. Was für Ressourcen haben sie verwendet, z.B. GPU/CPU-Ressourcen.
+%Verlinken sie ihren Code und Notebooks. 
 %Explain how you ran your experiments, e.g. the CPU/GPU resources and provide the link to your code and notebooks. 
 
 \subsection{Ressourcen für Berechnungen}
