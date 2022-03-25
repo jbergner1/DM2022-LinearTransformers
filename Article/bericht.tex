@@ -111,7 +111,8 @@ We have adjusted the hyperparameters of the model according to the original pape
 \subsection{Implementierung}
 The programming language that is used in the replication task is Julia. Due to the restriction of time, we have mainly taken most of the code from the package Transformers.jl as a template for the implementation. Other packages which were also imported into the notebook include Flux.jl, Tullio.jl, NNlib.jl and so on. For the synthetic task, we use a version of copy task based on the experiment which was used by Kitaev et al. (2020). As mentioned above in 3.1, what we do to implement linear attention is to replace the attention function of Transformers.jl with our own code called LinearAttention, which has been translated from the original PyTorch code by (Katharopoulus et al., 2020) to Julia code. The original code requires in addition one more function called splitHeads to reshape the 3D tensor to 4D tensor, which we have also included in the script. Furthermore, as the authors used the activation function elu(x) + 1 in original paper instead of relu(x) as in the Transformers.jl, we also attempt to implement elu(x) + 1 (which was called nelu in our script) into the code to make sure that the performances of each model are not affected by different conditions and therefore they are comparable. Also we have trimmed the other unnecessary functions like \(apply\)\(\textunderscore\)\(mask\), … for the sake of simplification. Lastly, instead of using Kullback-Leibler divergence as loss function, we apply cross entropy to calculate the loss for the gradient descent as given in the original work.
 
-# hier kommt noch code dazu
+
+................hier kommt noch code dazu
 
 %Beschreiben sie, ob sie vorhandenen Code oder eigenen Code genutzt haben.
 %Stellen sie Links zum Code bereit und beschreiben sie welche Programmiersprachen und Pakete genutzt wurden.
@@ -218,9 +219,24 @@ Geben sie Empfehlungen, wie die Autoren des Originalartikels oder andere Forsche
 % Describe a set of recommendations to the original authors or others who work in this area for improving reproducibility.
 
 \section{Kommunikation mit den Autoren}
-Dokumentieren sie das Ausmaß (oder das Fehlen) der Kommunikation mit Autoren.
-Stellen sie sicher, dass der Bericht eine faire Beurteilung der Forschungsarbeiten ist. Versuchen sie deshalb mit den Autoren Kontakt aufzunehmen.
-Sie können ihnen konkrete Fragen stellen oder falls sie keine Fragen haben, den Bericht zusenden und um Feedback bitten.
+Our contact to the authors was unanswered. However, the issues section in the GitHub Repository contains questions that are also interesting in our case.
+
+The user gaceladri made his own implementation of a Linear Transformer and shared a plot that showed, that the loss of a Linear Transformer is higher than the loss of a softmax-based Transformer (in this case a BERT model) when the gradient steps are lower than 10,000.  The user asked, if he has done something wrong regarding this discovery. Angelos Katharopoulos (username: angeloskath) answered, that this is possible, because the attention matrix of a Linear Transformer is low rank which leads to a harder learning process. The author further explains, that the whole point of Linear Transformers is an optimization of speed and memory. When these aspects are insignificant, using a softmax attention is probably better. 
+https://github.com/idiap/fast-transformers/issues/84
+
+The user Yogurt928 asked, why Einstein sums are used in the code, whereas the paper uses buzz signs. Katharopoulos responds: 
+\begin{quote}
+"The reason for using einsum instead of multiplication and summation is that it is faster since the large matrix does not need to ever be computed and kept in memory."
+\end{quote}
+
+At last, the user burcehan asked, why \(elu(x) + 1\) was used as the feature map.  He recognized, that the convergence of his model is very slow using this function.
+Angelos Katharopoulos answers that the feature map needs to correspond to a non-negative similarity score. The question, whether other feature maps are better is an open research problem. In the tests for the paper, some feature maps achieved similar results, others not. All in all this depends on the analysed problem, but problems that require sparse attention patterns might be harder to learn using the \(elu(x) + 1\) feature map.
+
+%Dokumentieren sie das Ausmaß (oder das Fehlen) der Kommunikation mit Autoren.
+%Stellen sie sicher, dass der Bericht eine faire Beurteilung der Forschungsarbeiten ist. Versuchen sie deshalb mit den Autoren Kontakt aufzunehmen.
+%Sie können ihnen konkrete Fragen stellen oder falls sie keine Fragen haben, den Bericht zusenden und um Feedback bitten.
+
+
 
 % Document the extent of (or lack of) communication with the original authors. To make sure the reproducibility report is a fair assessment of the original research we recommend getting in touch with the original authors. You can ask authors specific questions, or if you don't have any questions you can send them the full report to get their feedback.
 

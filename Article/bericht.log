@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.10)  23 MAR 2022 10:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.10)  25 MAR 2022 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -522,32 +522,24 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: Command \textunderscore invalid in math mode on input line 112.
 
-! You can't use `macro parameter character #' in vertical mode.
-l.114 #
-        hier kommt noch code dazu
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
 [3] [4] [5]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     269.
+(LaTeX3)     285.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     269.
+(LaTeX3)     285.
 
  (./bericht.aux)
 Package rerunfilecheck Info: File `bericht.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 11979 strings out of 478994
- 201100 string characters out of 5858184
+ 11980 strings out of 478994
+ 201118 string characters out of 5858184
  657535 words of memory out of 5000000
- 29309 multiletter control sequences out of 15000+600000
+ 29310 multiletter control sequences out of 15000+600000
  412158 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  111i,11n,116p,10629b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -562,7 +554,7 @@ cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
 l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bericht.pdf (5 pages, 131464 bytes).
+Output written on bericht.pdf (5 pages, 132971 bytes).
 PDF statistics:
  154 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
