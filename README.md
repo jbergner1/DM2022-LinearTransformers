@@ -9,7 +9,7 @@ In this Project we created a Linear Transformer in Julia in order to run a copy 
 ## Structure of the Repository
 ### Original Source Code in Python
 The original Python code of the copy task done by a Linear Transformer can be found [here](https://github.com/idiap/linear-transformer-experiments/tree/master/causal-copy). 
-You need to install torch and pytorch-fast-transformers to run it. These packages can be downloaded by the following command:
+You need to install [torch](https://pytorch.org) and [pytorch-fast-transformers](https://github.com/idiap/fast-transformers) to run it. These packages can be downloaded by the following command:
 ```
 pip install torch pytorch-fast-transformers
 ```
