@@ -22,3 +22,6 @@ Our main file of the Linear Transformer in Julia is LinTrans.jl. We recommend op
 You can change the basic parameters, like sequence length, right on top of the code. After that make sure to run the whole code again. Otherwise Pluto could create an error.
 The following packages are needed to run it: Flux, CUDA (if you use a GPU), Tullio, NNlib, Plots.
 We recomment using the master branch. However, our test files and tryouts are accessable in the branches JB-working and vado.
+
+### Article of our Replication
+We created this replication as an examination in our lecture Data Mining. In the folder /Article you can find our text about this replication, were we further discuss our ideas for this replication.
