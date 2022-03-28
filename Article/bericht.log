@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.10)  28 MAR 2022 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.3.10)  28 MAR 2022 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -604,7 +604,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.120 \\ F
-          or the synthetic task, we use a version of copy task based on the ...
+          or the synthetic task, we use a modified version of copy task base...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -856,8 +856,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.130 \\ F
-          urthermore, as the authors used the activation function elu(x) + 1...
+l.130 \\ M
+          oreover, as the authors used the activation function elu(x) + 1 in...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1169,7 +1169,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.187 \centering
+l.186 \centering
                 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1182,7 +1182,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.188 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
+l.187 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
                                                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1194,7 +1194,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.188 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
+l.187 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
                                                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1206,7 +1206,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.188 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
+l.187 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
                                                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1218,7 +1218,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.188 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
+l.187 ...n{tabular}{l c {4cm} l r {4cm} l z{4cm}|}
                                                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1230,12 +1230,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.197 
+l.196 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+[4]
 
 ! LaTeX Error: There's no line here to end.
 
@@ -1243,52 +1244,50 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.198 \\A
+l.199 \\A
          s mentioned, we can not implement higher sequences to empirically d...
 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[4]
-</Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/r-co
-de.jpg, id=50, 758.835pt x 401.5pt>
+</Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/Rplo
+t.png, id=50, 1345.025pt x 649.42625pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
-/r-code.jpg Graphic file (type jpg)
+/Rplot.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
-r-code.jpg>
+Rplot.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/r-code.jpg  used on input line 202.
-(pdftex.def)             Requested size: 459.6215pt x 243.187pt.
+mers/Article/images/Rplot.png  used on input line 203.
+(pdftex.def)             Requested size: 459.6215pt x 221.92177pt.
 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/conv
-_plot_linear.png, id=51, 817.0525pt x 647.41875pt>
+_plot_linear.png, id=52, 817.0525pt x 647.41875pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /conv_plot_linear.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 conv_plot_linear.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/conv_plot_linear.png  used on input line 246.
+mers/Article/images/conv_plot_linear.png  used on input line 247.
 (pdftex.def)             Requested size: 459.6215pt x 364.20178pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/r
--code.jpg>] [6 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Arti
-cle/images/conv_plot_linear.png>]
+[5 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/R
+plot.png>] [6 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Artic
+le/images/conv_plot_linear.png>]
 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/comp
-arison.png, id=67, 848.16875pt x 328.22626pt>
+arison.png, id=68, 848.16875pt x 328.22626pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /comparison.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 comparison.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/comparison.png  used on input line 278.
+mers/Article/images/comparison.png  used on input line 279.
 (pdftex.def)             Requested size: 459.6215pt x 177.86557pt.
  [7 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 comparison.png>] [8] [9] [10]
 ! Misplaced alignment tab character &.
-l.415 ... Kaiser, L., Belanger, D., Colwell, L., &
+l.416 ... Kaiser, L., Belanger, D., Colwell, L., &
                                                    Weller, A. (2021). Rethin...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1298,7 +1297,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.416 ...atharopoulos, A., Vyas, A., Pappas, N., &
+l.417 ...atharopoulos, A., Vyas, A., Pappas, N., &
                                                    Fleuret, F. (2020). Trans...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1308,7 +1307,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.417 ... et al., 2020} Kitaev, N., Kaiser, Ł., &
+l.418 ... et al., 2020} Kitaev, N., Kaiser, Ł., &
                                                    Levskaya, A. (2020). Refo...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1318,7 +1317,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.418 ...Pham, P., Rao, J., Yang, L., Ruder, S., &
+l.419 ...Pham, P., Rao, J., Yang, L., Ruder, S., &
                                                    Metzler, D. (2020). Long ...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1328,7 +1327,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.419 ...., Jones, L., Gomez, A. N., Kaiser, L., &
+l.420 ...., Jones, L., Gomez, A. N., Kaiser, L., &
                                                    Polosukhin, I. (2017). At...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1338,7 +1337,7 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 ! Misplaced alignment tab character &.
-l.420 ...g, S., Li, B. Z., Khabsa, M., Fang, H., &
+l.421 ...g, S., Li, B. Z., Khabsa, M., Fang, H., &
                                                    Ma, H. (2020). Linformer:...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1348,19 +1347,19 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 420--421
+Underfull \hbox (badness 3000) in paragraph at lines 421--422
 []\OT1/cmr/m/n/10.95 Wang, S., Li, B. Z., Khabsa, M., Fang, H.,  Ma, H. (2020).
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 420--421
+Underfull \hbox (badness 10000) in paragraph at lines 421--422
 \OT1/cmr/m/n/10.95 Lin-former: Self-Attention with Lin-ear Com-plex-ity. arXiv:
 2006.04768 [cs, stat].
  []
 
 ! Misplaced alignment tab character &.
-l.421 ...am, P., Ravula, A., Wang, Q., Yang, L., &
+l.422 ...am, P., Ravula, A., Wang, Q., Yang, L., &
                                                    Ahmed, A. (2021). Big Bir...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1371,46 +1370,46 @@ might try typing `S' now just to see what is salvageable.
 
 [11]
 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/comp
-Time_plot.png, id=104, 593.21625pt x 357.335pt>
+Time_plot.png, id=105, 593.21625pt x 357.335pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /compTime_plot.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 compTime_plot.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/compTime_plot.png  used on input line 430.
+mers/Article/images/compTime_plot.png  used on input line 431.
 (pdftex.def)             Requested size: 459.6215pt x 276.87178pt.
  [12 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /compTime_plot.png>]
 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/conv
-_plot_softmax.png, id=113, 817.0525pt x 639.38875pt>
+_plot_softmax.png, id=114, 817.0525pt x 639.38875pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /conv_plot_softmax.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 conv_plot_softmax.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/conv_plot_softmax.png  used on input line 441.
+mers/Article/images/conv_plot_softmax.png  used on input line 442.
 (pdftex.def)             Requested size: 459.6215pt x 359.68456pt.
  [13 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /conv_plot_softmax.png>]
 </Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/gitH
-istory.png, id=122, 700.6175pt x 679.53876pt>
+istory.png, id=123, 700.6175pt x 679.53876pt>
 File: /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images
 /gitHistory.png Graphic file (type png)
 <use /Users/johannes/Documents/GitHub/DM2022-LinearTransformers/Article/images/
 gitHistory.png>
 Package pdftex.def Info: /Users/johannes/Documents/GitHub/DM2022-LinearTransfor
-mers/Article/images/gitHistory.png  used on input line 451.
+mers/Article/images/gitHistory.png  used on input line 452.
 (pdftex.def)             Requested size: 459.6215pt x 445.80106pt.
 
 
-! LaTeX Error: \begin{thebibliography} on input line 414 ended by \end{document
+! LaTeX Error: \begin{thebibliography} on input line 415 ended by \end{document
 }.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.455 \end{document}
+l.456 \end{document}
                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1420,11 +1419,11 @@ or  <return>  to continue without it.
 gitHistory.png>]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     455.
+(LaTeX3)     456.
 
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     455.
+(LaTeX3)     456.
 
  (./bericht.aux)
 
@@ -1435,13 +1434,13 @@ Package rerunfilecheck Info: File `bericht.out' has not changed.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 414 (\begingroup)
+### semi simple group (level 1) entered at line 415 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 12032 strings out of 478994
- 204131 string characters out of 5858184
- 636737 words of memory out of 5000000
- 29313 multiletter control sequences out of 15000+600000
+ 12030 strings out of 478994
+ 204109 string characters out of 5858184
+ 635737 words of memory out of 5000000
+ 29312 multiletter control sequences out of 15000+600000
  413321 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  111i,11n,116p,10629b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1461,9 +1460,9 @@ b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
 sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on bericht.pdf (14 pages, 1739494 bytes).
+Output written on bericht.pdf (14 pages, 1743477 bytes).
 PDF statistics:
- 248 PDF objects out of 1000 (max. 8388607)
+ 249 PDF objects out of 1000 (max. 8388607)
  203 compressed objects within 3 object streams
  53 named destinations out of 1000 (max. 500000)
  175 words of extra memory for PDF output out of 10000 (max. 10000000)
