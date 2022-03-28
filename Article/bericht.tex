@@ -157,7 +157,9 @@ Firstly, 8 random batches as training data will be created. They will go through
 
 The Authors claimed, that their model can perform much better than the other implementation of Transformer for very long sequences due to the linearity property. Therefore, two models will be trained with increasing sequence length to verify this statement, namely Transformer with softmax attention and Linear Transformer with linear attention. Also we double the length of symbol sequence after each run, beginning with 8, 16, 32 and 64. The run time as well as convergency was reported afterwards.
 
-Towards the convergency, both model do not always converge within 3000 steps. It might be due to the the very small batch size, as reducing batch size can result in worser performance of optimizer. The plots of the convergence can be seen in the Supplementary Material.
+Towards the convergency, both model do not always converge within 3000 steps. It might be due to the the very small batch size, as reducing batch size can result in worser performance of optimizer. 
+
+We implemented our code in a Pluto notebook and uploaded all our files in our GitHub repository \url{https://github.com/jbergner1/DM2022-LinearTransformers/}. In order to run our code we recomment reading the Read Me. 
 
 
 %Erklären sie, wie sie ihre Experimente durchgeführt haben. Was für Ressourcen haben sie verwendet, z.B. GPU/CPU-Ressourcen.
@@ -177,7 +179,7 @@ Due to the linearity property as mentioned by the authors, we expect that the ru
 
 
 \section{Results}
-Due to the lack of memory capacity of the GPU, we can only set the sequence length to 64 at the maximum. The result can be seen in table 1 below.
+Due to the lack of memory capacity of the GPU, we can only set the sequence length to 64 at the maximum. The result can be seen in table 1 below (this table is presented as a plot in the Supplementary Material).
 
 
 \begin{table}[htbp]
@@ -351,7 +353,6 @@ Although the authors answer question in the issues section in GitHub very good, 
 Our contact to the authors was unanswered. However, the issues section in the GitHub Repository contains questions that are also interesting in our case.
 
 The user gaceladri made his own implementation of a Linear Transformer and shared a plot that showed, that the loss of a Linear Transformer is higher than the loss of a softmax-based Transformer (in this case a BERT model) when the gradient steps are lower than 10,000.  The user asked, if he has done something wrong regarding this discovery. Angelos Katharopoulos (username: angeloskath) answered, that this is possible, because the attention matrix of a Linear Transformer is low rank which leads to a harder learning process. The author further explains, that the whole point of Linear Transformers is an optimization of speed and memory. When these aspects are insignificant, using a softmax attention is probably better. 
-https://github.com/idiap/fast-transformers/issues/84
 
 The user Yogurt928 asked, why Einstein sums are used in the code, whereas the paper uses buzz signs. Katharopoulos responds: 
 \begin{quote}
@@ -422,13 +423,32 @@ Angelos Katharopoulos answers that the feature map needs to correspond to a non-
 \newpage
 \section*{Supplementary Material}
 
-\section*{Convergence Plots}
+\section*{Computational time over gradient steps}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{compTime_plot}
+    \caption{Computational time of softmax and linear attention over 3,000 gradient steps}
+    \label{fig:mesh1}
+\end{figure}
+
+\newpage
+\section*{Convergence Plot of Softmax Transformer}
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{conv_plot_softmax}
-    \caption{Convergence Plots of Softmax Transformer}
+    \caption{Convergence Plots of Softmax Transformer at 3,000 gradient steps}
+    \label{fig:mesh1}
+\end{figure}
+
+\newpage
+\section*{Git History}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{gitHistory}
     \label{fig:mesh1}
 \end{figure}
 
