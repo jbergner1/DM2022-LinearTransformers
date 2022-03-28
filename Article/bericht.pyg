@@ -1,0 +1,5 @@
+
+function splitHeads(x, batch_size, head, depth)
+    x = reshape(x, (batch_size, :, head, depth))
+end
+
